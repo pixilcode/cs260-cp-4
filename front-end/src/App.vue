@@ -7,7 +7,7 @@
     </nav>
     <router-view />
     <footer>
-      <a href="https://github.com/pixilcode/cs260-cp-3">Github Repository</a>
+      <a href="https://github.com/pixilcode/cs260-cp-4">Github Repository</a>
     </footer>
   </div>
 </template>
