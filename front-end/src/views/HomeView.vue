@@ -90,7 +90,7 @@ export default {
   },
 
   async created() {
-    this.update();
+    await this.update();
   },
 
   methods: {
@@ -110,7 +110,7 @@ export default {
         await axios.put(`/api/stories/${story._id}/uncheckTask/${task._id}`);
       }
 
-      this.update();
+      await this.update();
     },
 
     async update() {
@@ -127,7 +127,13 @@ export default {
 
       this.stories = stories.data.map((story) => ({
         ...story,
-        completionDate: new Date(story.completionDate),
+        completionDate:
+          story.completionDate === null ? null : new Date(story.completionDate),
+        tasks: story.tasks.map((task) => ({
+          ...task,
+          completionDate:
+            task.completionDate === null ? null : new Date(task.completionDate),
+        })),
       }));
 
       this.currStories = this.stories.filter(

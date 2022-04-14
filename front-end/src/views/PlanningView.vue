@@ -117,7 +117,10 @@ export default {
       this.stories = stories.data
         .map((story) => ({
           ...story,
-          completionDate: new Date(story.completionDate),
+          completionDate:
+            story.completionDate === null
+              ? null
+              : new Date(story.completionDate),
         }))
         .filter(
           (story) =>
